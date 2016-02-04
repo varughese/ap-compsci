@@ -69,6 +69,42 @@ public class PictureTester
     pic.explore();
   }
   
+  public static void flipHorizontal(){
+    Picture pic1 = new Picture("butterfly1.jpg");
+    Picture pic2 = new Picture("butterfly1.jpg");
+    pic1.explore();
+    Pixel[][] pixels1 = pic1.getPixels2D();
+    Pixel[][] pixels2 = pic2.getPixels2D();
+    for(int row = 0; row < pixels1.length; row++){
+      for(int col = 0; col < pixels2[0].length; col++){
+         pixels2[row][pic1.getWidth()-col-1].setRed(pixels1[row][col].getRed());
+         pixels2[row][pic1.getWidth()-col-1].setBlue(pixels1[row][col].getBlue());
+         pixels2[row][pic1.getWidth()-col-1].setGreen(pixels1[row][col].getGreen());
+      }
+    }
+    
+    pic2.explore();
+    
+  }
+  
+  public static void flipVertical(){
+    Picture pic1 = new Picture("butterfly1.jpg");
+    Picture pic2 = new Picture("butterfly1.jpg");
+    pic1.explore();
+    Pixel[][] pixels1 = pic1.getPixels2D();
+    Pixel[][] pixels2 = pic2.getPixels2D();
+    for(int row = 0; row < pixels1.length; row++){
+      for(int col = 0; col < pixels2[0].length; col++){
+         pixels2[pic1.getHeight()-row-1][col].setRed(pixels1[row][col].getRed());
+         pixels2[pic1.getHeight()-row-1][col].setBlue(pixels1[row][col].getBlue());
+         pixels2[pic1.getHeight()-row-1][col].setGreen(pixels1[row][col].getGreen());
+      }
+    }
+    
+    pic2.explore();
+    
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -99,5 +135,8 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
+    
+    //flipHorizontal();
+    flipVertical();
   }
 }
