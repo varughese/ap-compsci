@@ -18,6 +18,11 @@ Then, to add your changes (which is kind of like "saving" them in git world) ent
 git add .
 ```
 
+Then, you need to write a message that explains what you did before you push it up. Type this command:
+```
+git commit -m "Enter whatever message you did here"
+```
+
 Then, to push your changes up to GitHub so it is live on the internet, type
 ```
 git push origin master
