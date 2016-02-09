@@ -17,6 +17,28 @@ public class PictureTester
     beach.explore();
   }
   
+  public static void testZeroRed()
+  {
+    Picture beach = new Picture("beach.jpg");
+    beach.explore();
+    beach.zeroRed();
+    beach.explore();
+  }
+  public static void convertToBlackAndWhite() {
+     Picture pic = new Picture("femaleLionAndHall.jpg");
+     pic.explore();
+     Pixel[][] p = pic.getPixels2D();
+     for(int row = 0; row<p.length; row++) {
+        for(int col = 0; col<p[0].length; col++) {
+            int avg = (int)p[row][col].getAverage();
+            p[row][col].setRed(avg);
+            p[row][col].setBlue(avg);
+            p[row][col].setGreen(avg);
+        }
+     }
+     pic.explore();
+  }
+  
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
@@ -50,6 +72,70 @@ public class PictureTester
     swan.edgeDetection(10);
     swan.explore();
   }
+  
+  public static void adjustBrightness(double x) {
+    
+    Picture pic = new Picture("koala.jpg");
+     pic.explore();
+     Pixel[][] p = pic.getPixels2D();
+    for(int row = 0; row<p.length; row++) {
+        for(int col = 0; col<p[0].length; col++) {
+            Pixel px = p[row][col];
+            int red = px.getRed();
+            int blue = px.getBlue();
+            int green = px.getGreen();
+    
+            
+            if(red*x > 255 || blue*x > 255 || green*x > 255){
+                int newX = 1;
+                if(red*x > 255){
+                    int temp = 255-red;
+                    int avg = 1 + (int)temp/red;
+                    newX = avg;
+                }
+                if(blue*x > 255){
+                    int temp = 255-blue;
+                    int avg = 1 + (int)temp/blue;
+                    newX = avg;
+                }
+                if(green*x > 255){
+                    int temp = 255-green;
+                    int avg = 1 + (int)temp/green;
+                    newX = avg;
+                }
+                
+                px.setRed(red*newX);
+                px.setBlue(blue*newX);
+                px.setGreen(green*newX);
+            } else  {
+                int r = (int)(red*x);
+                int b = (int)(blue*x);
+                int g = (int)(green*x);
+                
+                px.setRed(r);
+                px.setBlue(b);
+                px.setGreen(g);
+            }
+        }
+     }
+      pic.explore();
+  }
+  
+  public static void verticalMirror() {
+     Picture pic = new Picture("redMotorcycle.jpg");
+     pic.explore();
+     Pixel[][] pixels = pic.getPixels2D();
+     for(int row = 0; row < pixels.length; row++) {
+        for(int col = 0; col < (pixels[0].length-1) / 2; col++) {
+            Pixel a = pixels[row][col];
+            pixels[row][pic.getWidth() - 1 - col].setRed(pixels[row][col].getRed());
+            pixels[row][pic.getWidth() - 1 - col].setBlue(pixels[row][col].getBlue());
+            pixels[row][pic.getWidth() - 1 - col].setGreen(pixels[row][col].getGreen());
+        }
+     }
+     pic.explore();
+  }
+  
   
   public static void repairTemple() {
     Picture pic = new Picture("temple.jpg");
@@ -100,11 +186,7 @@ public class PictureTester
          pixels2[pic1.getHeight()-row-1][col].setGreen(pixels1[row][col].getGreen());
       }
     }
-    
-    pic2.explore();
-    
   }
-  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -113,7 +195,10 @@ public class PictureTester
     // and comment out the ones you don't want
     // to run
     //testZeroBlue();
-    //repairTemple();
+    //testZeroRed();
+    //convertToBlackAndWhite();
+    //adjustBrightness(.8);
+    //verticalMirror();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
@@ -128,15 +213,13 @@ public class PictureTester
     //testCollage();
     //testCopy();
     //testEdgeDetection();
-   // testEdgeDetection2();
+    //testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
-    
-    //flipHorizontal();
-    flipVertical();
+	 //flipHorizontal();
   }
 }
