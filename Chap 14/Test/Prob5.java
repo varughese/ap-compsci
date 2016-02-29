@@ -10,10 +10,14 @@ public class Prob5 {
          
          int diff = 0;
          
-         if(list1counter != list1.size() && list2counter != list2.size()) {
+         if(list1counter < list1.size() && list2counter < list2.size()) {
            diff = list1.get(list1counter).compareTo(list2.get(list2counter));
          } else {
-            diff = list1counter - list2counter;
+           if(list1counter == list1.size()) {
+              diff = 1;
+           } else {
+             diff = -1;
+           }
          }
          
          if(diff < 0) {
