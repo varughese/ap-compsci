@@ -25,26 +25,14 @@ public class Prob5 {
          }
       }
       
-      // if(list1counter == list1.size()) {
-//          for(int i = list2counter; i < list2.size(); i++) {
-//             x.add(list2.get(i));
-//          }
-//       }
-//       
-//       if(list2counter == list2.size()) {
-//          for(int i = list1counter; i < list1.size(); i++) {
-//             x.add(list1.get(i));
-//          }
-//       }
-      
       return x;
    }
    
    public static void main(String[] args) {
       ArrayList<String> list1 = new ArrayList<String>();
-      list1.add("Adam"); list1.add("Bob"); list1.add("Dylan"); list1.add("Frog"); list1.add("Zebra");
+      list1.add("Adam"); list1.add("Bob"); list1.add("Dylan"); list1.add("Frog");
       ArrayList<String> list2 = new ArrayList<String>();
-      list2.add("Charles"); list2.add("Dan"); list2.add("Eggs"); list2.add("Ryan"); list2.add("Jason");
+      list2.add("Charles"); list2.add("Dan"); list2.add("Eggs"); list2.add("Ryan"); list2.add("Jason"); list2.add("ZA"); list2.add("ZB");
       
       System.out.println(merge(list1, list2));
    }
