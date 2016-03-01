@@ -31,8 +31,6 @@ public class Question5 {
                x.add(list1.get(i));
             }
          }
-
-         //System.out.println(x);
       }
       
       return x;
@@ -88,9 +86,9 @@ public class Question5 {
       
       test1.add("Daniel"); test1.add("Dylan"); 
       test2.add("Aardvark"); test2.add("Frog"); 
-      test3.add("A"); test3.add("F"); test3.add("G"); test3.add("D"); test3.add("H"); test3.add("E"); test3.add("B"); test3.add("C"); test3.add("Z");
+      test3.add("A"); test3.add("F"); test3.add("G"); test3.add("D"); test3.add("H"); test3.add("E"); test3.add("B"); test3.add("C"); test3.add("I");
           
-      System.out.println(merge(test1, test2));
+      //System.out.println(merge(test1, test2));
       System.out.println(test3);
       System.out.println(mergeSort(test3));
    }
