@@ -22,6 +22,6 @@ public class Question2 {
    
    public static void main(String[] args){
       int[] test = {1,6,2,5,0,8,7,9,11};
-      System.out.println(searchArray(test,21));
+      System.out.println(searchArray(test,6));
    }
 }
