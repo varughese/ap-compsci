@@ -32,35 +32,46 @@ public class Prob5 {
       return x;
    }
    
-   public static ArrayList<String> mergeSort(ArrayList<String> list) {
-      int n = list.size();
-      ArrayList<String> temp = new ArrayList<String>();
-      recursiveSort(list, 0, n-1, temp);
-      return temp;
-   }
+   static ArrayList<String> arr = new ArrayList<String>();
    
-   private static void recursiveSort(ArrayList<String> a, int from, int to, ArrayList<String> temp) {
-      if(to - from < 2) {
-         if(to > from && a.get(to).compareToIgnoreCase(a.get(from)) > 0) {
-            String t = a.get(to); a.set(to, a.get(from)); a.set(from, t);
-         }
+   public static ArrayList<String> mergeSort(ArrayList<String> list){
+      
+      if(list.size() == 1){
+         ArrayList<String> temp = new ArrayList<String>();
+         temp.addAll(list);
+         //System.out.println(temp);
+         return temp;
       } else {
-         int middle = (from + to) / 2;
-         recursiveSort(a, from, middle, temp);
-         recursiveSort(a, middle + 1, to, temp);
-         ArrayList<String> a1 = new ArrayList<String>();
-         ArrayList<String> a2 = new ArrayList<String>();
-         for(int i = from; i <= middle; i++) {
-            a1.add(a.get(i));
+         int mid = list.size()/2;
+         
+         ArrayList<String> left = new ArrayList<String>();
+         ArrayList<String> right = new ArrayList<String>();
+         
+         if(mid == 0){
+            left.add(list.get(0));
+            right.add(list.get(1));
+         } else {
+            for(int i = 0; i < mid; i++){
+               left.add(list.get(i));
+            }
+         
+            for(int j = mid; j < list.size(); j++){
+               //System.out.println(j);
+               right.add(list.get(j));
+            }
+            
+            //System.out.println(left);
+            //System.out.println(right);
+         
          }
-         for(int j = middle + 1; j <= to; j++) {
-            a2.add(a.get(j));
-         }
-         ArrayList<String> res = merge(a1, a2);
-          for(int k = from; k <= to; k++) {
-             temp.add(res.get(k));
-          }
+         //mergeSort(right);
+         mergeSort(left);
+         mergeSort(right);
+         //System.out.println(merge(mergeSort(left),mergeSort(right)));
+         arr = merge(mergeSort(left),mergeSort(right));
+         
       }
+      return arr;
    }
    
    public static void main(String[] args) {
@@ -75,7 +86,7 @@ public class Prob5 {
        //unsorted.add("Zebras"); unsorted.add("Pancakes"); unsorted.add("Bananasw"); unsorted.add("Apples");
 
         
-        //System.out.println(mergeSort(unsorted));
+        //  System.out.println(mergeSort(unsorted));
    }
    
    
